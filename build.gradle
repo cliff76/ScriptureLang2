@@ -1,0 +1,27 @@
+group 'com.craig.example'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'antlr'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    antlr4 {
+        description = "ANTLR4"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "org.antlr:antlr4:4.5.3"
+    antlr4 "org.antlr:antlr4:4.5"
+}
+
+generateGrammarSource {
+    antlrClasspath = configurations.antlr4
+}
